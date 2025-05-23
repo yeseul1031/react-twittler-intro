@@ -95,9 +95,9 @@ const Features = ({tweets}) => {
       <div className="tweetForm__container">
         <div className="tweetForm__wrapper">
           <div className="tweetForm__profile"></div>
-          <Counter total={tweets.length} />
+          <Counter total={dummyTweets.length} />
           <div className="tweetForm__count__text">
-            총 {tweets.length}개의 트윗이 있습니다 🚀
+            총 {dummyTweets.length}개의 트윗이 있습니다 🚀
           </div>
         </div>
       </div>
