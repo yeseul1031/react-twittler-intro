@@ -20,7 +20,7 @@ const Sidebar = () => {
             <i className="fas fa-home icon"></i> 홈
           </div>
           <div className="sidebar__menuItem">
-            <i className="fas fa-search icon"></i> 탐색
+            <i className="fas fa-search icon"></i> 검색
           </div>
           <div className="sidebar__menuItem">
             <i className="fas fa-bell icon"></i> 알림
