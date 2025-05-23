@@ -26,6 +26,8 @@ body {
   display: flex;
   justify-content: center;
   min-height: 100vh;
+  background-color: #000;
+  color: #fff;        
 }
 
 button,
@@ -68,39 +70,98 @@ textarea {
   resize: none;
 }
 
+.header {
+  display: flex;
+  justify-content: flex-end; 
+  align-items: center;
+  height: 2cm; 
+  padding: 0 1rem;
+  background-color: black; 
+}
+
+.header-logo {
+  height: 30%; 
+  margin-left: 0.5rem;
+  filter: invert(1);
+}
+
+.header-text {
+  color: white;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
 .App {
   display: flex;
-  flex-direction: column;
-  min-height: 100%;
+  flex-direction: column; 
+  width: 100%;
+  min-height: 100vh;
+  color: #fff;
 }
 
 footer {
   flex: 0 0 1rem;
   padding: 0.3rem;
   text-align: right;
-  border: 2px solid var(--footer-component-color);
+  border-top: 1px solid #444;
+  color: #aaa;
 }
+
 
 main {
   display: flex;
   flex-direction: row;
-  max-width: 640px;
-  flex: 1 0 0;
+  max-width: none;
+  flex: 1;
 }
 
 .sidebar {
   display: flex;
   flex-direction: column;
-  border: 2px solid var(--sidebar-component-color);
+  border-right: 1px solid #444;
+  width: 220px; 
+  padding: 1rem 0;
+  padding-top: 1.5rem;
+  gap: 1rem;
+  align-items: flex-start; 
+  background-color: #000;
+}
+
+.sidebar__menuItem {
+  height: 56px;
+  line-height: 56px;
+  display: flex;
+  align-items: center;
+  padding-left: 2rem;
+  padding-right: 0;   
+  box-sizing: border-box; 
+  font-weight: 600;
+  font-size: 1.1rem;
+  cursor: pointer;
+  border-radius: 0;
+  width: 100%;
+  transition: background-color 0.2s;
+  color: #fff;
 }
 
 .far,
 .fas {
   font-size: 2rem;
-  color: var(--default-text-color);
+  color: #fff;
   padding: 1.3rem;
   cursor: pointer;
+} 
+
+.sidebar__menuItem:hover {
+  background-color: #222;
+  
 }
+
+.sidebar__menuItem .icon {
+  margin-right: 1rem;
+  font-size: 1.5rem;
+}
+
 
 .features {
   display: flex;
@@ -120,6 +181,7 @@ main {
   display: flex;
   flex-direction: row;
   padding: 0.5rem 1rem;
+  min-height: 56px;
 }
 
 .tweetForm__profile,
@@ -161,6 +223,14 @@ main {
   align-items: center;
 }
 
+.tweetForm__countBar {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin: 0.5rem 0;
+}
+
+
 .tweetForm__count__text {
   color: var(--sub-text-color);
 }
@@ -185,9 +255,9 @@ main {
 
 .tweets,
 .notifications {
-  flex: 1 0 80vh;
+  flex: 1;
   overflow-y: scroll;
-  border: 2px solid var(--tweets-component-color);
+  border: 1px solid #555; 
 }
 
 .tweet,
@@ -195,7 +265,9 @@ main {
   display: flex;
   list-style: none;
   padding: 0.5rem 1rem;
-  border: 2px solid var(--tweet-component-color);
+  border: 1px solid #555;
+  background-color: #000; 
+  color: #fff;
 }
 
 .tweet:hover,
@@ -225,7 +297,7 @@ main {
 }
 
 .tweet__userInfo > .tweet__username {
-  color: var(--bold-text-color);
+  color: #007580;
   font-weight: 700;
   margin-left: 0.5rem;
 }

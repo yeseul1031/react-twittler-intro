@@ -4,20 +4,46 @@ import { dummyTweets } from './static/dummyData';
 // ! 위 코드는 수정하지 않습니다.
 console.log(dummyTweets); // 개발 단계에서 사용하는 더미 데이터입니다.
 
-const Sidebar = () => {
+const Header = () => {
   return (
-    <section className="sidebar">
-      {/* TODO : 메세지 아이콘을 작성합니다. */}
-    </section>
+    <div className="header">
+      <span className="header-text">ROCKET TWITTLER</span>
+      <img src="/rocketboost_logo_symbol-1.png" alt="로고" className="header-logo" />
+    </div>
   );
 };
 
-const Counter = () => {
+const Sidebar = () => {
+  return (
+        <section className="sidebar">
+          <div className="sidebar__menuItem">
+            <i className="fas fa-home icon"></i> 홈
+          </div>
+          <div className="sidebar__menuItem">
+            <i className="fas fa-search icon"></i> 탐색
+          </div>
+          <div className="sidebar__menuItem">
+            <i className="fas fa-bell icon"></i> 알림
+          </div>
+          <div className="sidebar__menuItem">
+            <i className="fas fa-envelope icon"></i> 메시지
+          </div>
+          <div className="sidebar__menuItem">
+            <i className="far fa-comment-dots icon"></i> 댓글
+          </div>
+
+        </section>
+      );
+    };
+    
+
+
+const Counter = ({total}) => {
   return (
     <div className="tweetForm__input">
       <div className="tweetForm__inputWrapper">
         <div className="tweetForm__count" role="status">
-          TODO : dummyTweet로 전달되는 데이터의 갯수를 보여줍니다.
+        total: {total}
         </div>
       </div>
     </div>
@@ -25,26 +51,35 @@ const Counter = () => {
 };
 
 const Footer = () => {
-  return <div></div>;
+  return (
+    <footer className="footer">
+      <p>ⓒ 2025 Twittler. All rights reserved.</p>
+    </footer>
+  );
 };
-// TODO : Footer 함수 컴포넌트를 작성합니다. 시멘틱 엘리먼트 footer가 포함되어야 합니다.
 
-const Tweets = () => {
+const Tweets = ({tweets}) => {
   return (
     <ul className="tweets">
       {dummyTweets.map((tweet) => {
+        const isBob = tweet.username === 'Bob';
+        const tweetUserNameClass = isBob
+          ? 'tweet__username tweet__username--purple'
+          : 'tweet__username';
+
         return (
           <li className="tweet" key={tweet.id}>
             <div className="tweet__profile">
-              {/* TODO: 트윗 저자의 프로필 사진이 있어야 합니다.  */}
+              <img src={tweet.picture} alt={tweet.username} />
             </div>
             <div className="tweet__content">
               <div className="tweet__userInfo">
-                {/* TODO : 유져 이름이 있어야 합니다. */}
-                {/* TODO : 이름이 "Bob"인 경우, 이름 배경색을 rgb(235, 229, 249)으로 바꿔야 합니다. */}
-                {/* TODO : 트윗 생성 일자가 있어야 합니다. */}
+                <span className={tweetUserNameClass}>
+                  {tweet.username}
+                </span>
+                <span className="tweet__createdAt">{tweet.createdAt}</span>
               </div>
-              TODO : 트윗 메세지가 있어야 합니다.
+              <div className="tweet__message">{tweet.content}</div>
             </div>
           </li>
         );
@@ -53,27 +88,32 @@ const Tweets = () => {
   );
 };
 
-const Features = () => {
+
+const Features = ({tweets}) => {
   return (
     <section className="features">
       <div className="tweetForm__container">
         <div className="tweetForm__wrapper">
           <div className="tweetForm__profile"></div>
-          <Counter />
+          <Counter total={tweets.length} />
+          <div className="tweetForm__count__text">
+            총 {tweets.length}개의 트윗이 있습니다 🚀
+          </div>
         </div>
       </div>
-      <Tweets />
-      TODO : Footer 컴포넌트를 작성합니다.
+      <Tweets tweets={tweets}/>
+      <Footer />
     </section>
   );
 };
 
-const App = () => {
+const App = ({dummyTweets =[] }) => {
   return (
     <div className="App">
+      <Header />
       <main>
-        TODO : Sidebar 컴포넌트를 작성합니다.
-        <Features />
+      <Sidebar />
+      <Features tweets={dummyTweets} />
       </main>
     </div>
   );
